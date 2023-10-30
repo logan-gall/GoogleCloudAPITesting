@@ -1,15 +1,20 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+﻿# Use an official Python runtime as a parent image
+FROM python:3.10-slim
 
-COPY ./CloudRunDemo/CloudRunDemo.csproj ./CloudRunDemo/CloudRunDemo.csproj
-COPY *.sln ./
-RUN dotnet restore
-
-COPY . ./
-RUN dotnet publish -c Release -o build --no-restore
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+# Set the working directory to /app
 WORKDIR /app
-COPY --from=build ./build .
-ENV ASPNETCORE_URLS=http://*:8080
-EXPOSE 8080
-ENTRYPOINT [ "dotnet", "CloudRunDemo.dll" ]
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
