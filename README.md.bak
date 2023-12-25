@@ -6,11 +6,40 @@ This README file will be a tutorial for the repo, giving an overview of the file
 
 ## Tutorial Outline
 - Data Flow Diagram
+- Video
 - Required Files
-- Github Repo Setup
+- Initial Set Up
 - Programming an Endpoint
 - Creating Tests
 - Docker
 - Google Cloud Build
 - Google Cloud Run
 - Google Cloud API Gateway
+
+## Data Flow
+![](Cloud_API_DFD.jpg)
+
+## Required Files
+Here are the files that are needed in order to successfully work through this data pipeline.
+
+#### app.py
+* A Python application that provides a service
+* Needs to have a web socket open with port 8080
+
+#### requirements.txt
+* List of all required python packages and versions for app.py
+
+#### dockerfile
+* Defines how to build docker container
+* Builds container for app.py
+* Installs required packages in requirements.txt
+
+#### cloudbuild.yaml
+* Defines how to pull files, call docker building, and deploy into google cloud run
+
+## Video
+I followed this youtube tutorial to create the initial implementation of this application. Give them some like and credit here:
+
+https://www.youtube.com/watch?v=0mfng-vih_I
+
+## Initial Set Up
