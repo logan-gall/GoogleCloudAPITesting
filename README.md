@@ -8,7 +8,7 @@ This README file will be a tutorial for the repo, giving an overview of the file
 - Data Flow Diagram
 - Pre-Tutorial
 - Required Files
-- Initial Set Up
+- Cloud Set Up
 - Programming for Endpoints
 - Creating Tests
 - Docker
@@ -42,8 +42,8 @@ I followed this youtube tutorial to create the initial implementation of this ap
 
 https://www.youtube.com/watch?v=0mfng-vih_I
 
-## Overview Set Up
-There are a number of steps to initally set up the Google Cloud Instance. We will assume this project will be started with a fresh Google Cloud Instance and empty Github Repo. Below gives an overview, and later steps will go into more detail of their importance.
+# Part 1: Cloud Set Up
+There are a number of steps to initally set up the Google Cloud Instance. We will assume this project will be started with a fresh Google Cloud Instance and empty Github Repo. Part 1 gives an overview, and Part 2 will go into more detail of their importance.
 
 ### Download docker locally for testing
    * Optional but recommended
@@ -98,17 +98,47 @@ This is a long section, refrence linked video if necessary.
    * Edit Substitution variables
      * Add ```_GCR_HOSTNAME``` and set the value to ```us.gcr.io```
 
+#### The intitail setup is complete!
+
+# Part 2: Further Details
 
 ## Programming for Endpoints
 Our typical research workflows focus on getting single results and moving on. This will not work in this case. We need to create user-focused methodology. Data endpoints are the way to do this!
 
-In Python, Flask is an easy and powerful web interface toolkit. *app.py* has a simple web interface built on flask. It takes user input of a date, and returns values created in a dataframe of given data on the 2022 Becker UMN farms.
+In Python, Flask is an easy and powerful web interface toolkit. Other applications can be made for the Google Cloud Service, but this demo uses *app.py* as the primary application. *app.py* has a simple web interface built on flask. It takes user input of a date, and returns values created in a dataframe of given data on the 2022 Becker UMN farms.
+
+You can create almost any application, though there are a couple **required features** that allow cloud to communicate with the program:
+* Web service
+* Host 0.0.0.0
+* Port 8080 is OPEN
+* Note the application name (for Docker later)
+* Note what packages/imports are necessary (for Docker later)
 
 ## Creating Tests
-Testing is incredibly important for any workflow. Given we are working on public-facing code, it is impartive to have a robust testing scheme before publishing. *todo*
+Testing is incredibly important for any workflow. Given we are working on public-facing code, it is important to have a robust testing scheme. *todo*
 
 ## Docker
-Docker is a way to make our code easily run anywhere with little worry of environment errors.
+Docker is a way to make our code easily run anywhere with little worry of environment errors. It containerizes the code so that it will run the same every time and on every compatible machine.
+
+For this setup, we have two **required files** to get docker working:
+* dockerfile
+* requirements.txt
+
+### Dockerfile
+This file creates the docker container for our applicaiton. This file is called during the YAML files (next section). For this demo, it creates a Python environment within the container and then runs *app.py* whenver the Docker container is launched.
+
+**Required features:**
+* Port 80 is OPEN (web interface)
+* Run the application when container is launched
+
+### requirements.txt
+For the Python implementaion, *requirements.txt* is called inside the dockerfile to install any necessary packages for our applicaiton to run. All that is in the file is a list of Python packages with version numbers.
+
+### Testing Docker
+We can test if the dockerfile works properly locally by running the following commands (assuming we have docker installed on local machine):
+   * ```docker build -t clouddemoname .```
+   * ```docker run -name clouddemoname -p 5001:8080 -d clouddemoname```
+   * Go to ```localhost:5001``` and see if it works properly
 
 ## YAML
 YAML files are a way to execute terminal commands easily.
