@@ -12,9 +12,8 @@ This README file will be a tutorial for the repo, giving an overview of the file
 - Programming for Endpoints
 - Creating Tests
 - Docker
-- Google Cloud Build
-- Google Cloud Run
-- Google Cloud API Gateway
+- YAML
+- Current Status
 
 ## Data Flow
 ![](Cloud_API_DFD.jpg)
@@ -78,6 +77,7 @@ There are a number of steps to initally set up the Google Cloud Instance. We wil
 ### Cloud Console
    * Enable google cloud run API service
    * Enable google build API service
+   * Enable Identity and Access Management (IAM) API
 
 ### Cloud Run Service
 This is a long section, refrence linked video if necessary.
@@ -97,10 +97,11 @@ This is a long section, refrence linked video if necessary.
      * Repository (*cloudbuild.yaml* is with our github repo)
    * Edit Substitution variables
      * Add ```_GCR_HOSTNAME``` and set the value to ```us.gcr.io```
+     * Add ```_PROJECT_ID``` and set the value to the project ID given in the cloud console dashboard
 
 #### The intitail setup is complete!
 
-# Part 2: Further Details
+# Part 2: Further File Details
 
 ## Programming for Endpoints
 Our typical research workflows focus on getting single results and moving on. This will not work in this case. We need to create user-focused methodology. Data endpoints are the way to do this!
@@ -141,13 +142,23 @@ We can test if the dockerfile works properly locally by running the following co
    * Go to ```localhost:5001``` and see if it works properly
 
 ## YAML
-YAML files are a way to execute terminal commands easily.
+YAML files are a way to execute terminal commands easily. They consist of 'steps' which are different sections of commands. This demo has 3 steps:
+* Call Google Cloud Build to build the docker container
+* Push the docker container from cloud build to google cloud run
+* Deploy the docker container on google cloud run
 
-## Google Cloud Build
-Google cloud build is an environment to execute our docker container build.
+The *$_variables* are autofilled credentials that were defined in the initial cloud setup. The *cloudbuild.yaml* file in this demo is the first thing called when there is a push to the GitHub repo.
 
-## Google Cloud Run
-Google cloud run is the place where we can create web access for our build.
+Additionally, code testing could be added to the YAML file by defining a cloud program that tests the code to be run whenever there is a push.
 
-## Google API Gateway
-Google cloud API gateway provides a robust service to interact with our code in a headless environment.
+
+# Part 3: Current Status
+The project has a very simple working demo at this link:
+
+*Link removed because it costs me money on google cloud*
+
+## Future Steps
+* Create testing / QAQC features
+  * Compare GitHub vs Google Cloud for testing Code
+* Link Google Cloud API to allow API connection to our web service
+* Create more advanced demos than a simple webpage
