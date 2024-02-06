@@ -92,7 +92,7 @@ This is a long section, refrence linked video if necessary.
    * Create.
 
 ### Edit Continuous Deployment
-   * Give a name ```RTGS-CloudAPI-Demo```
+   * Give a name ```CloudAPIDemo```
    * Scroll down and change 'Location'
      * Repository (*cloudbuild.yaml* is with our github repo)
    * Edit Substitution variables
@@ -155,7 +155,9 @@ Additionally, code testing could be added to the YAML file by defining a cloud p
 # Part 3: Current Status
 The project has a very simple working demo at this link:
 
-*Link removed because it costs me money on google cloud*
+https://googlecloudapitesting-quhjl7zplq-uc.a.run.app
+
+*Link is removed because it costs me money on google cloud*
 
 ## Future Steps
 * Create testing / QAQC features
