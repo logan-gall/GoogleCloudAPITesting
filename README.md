@@ -150,17 +150,3 @@ YAML files are a way to execute terminal commands easily. They consist of 'steps
 The *$_variables* are autofilled credentials that were defined in the initial cloud setup. The *cloudbuild.yaml* file in this demo is the first thing called when there is a push to the GitHub repo.
 
 Additionally, code testing could be added to the YAML file by defining a cloud program that tests the code to be run whenever there is a push.
-
-
-# Part 3: Current Status
-The project has a very simple working demo at this link:
-
-https://googlecloudapitesting-quhjl7zplq-uc.a.run.app
-
-*Link is removed because it costs me money on google cloud*
-
-## Future Steps
-* Create testing / QAQC features
-  * Compare GitHub vs Google Cloud for testing Code
-* Link Google Cloud API to allow API connection to our web service
-* Create more advanced demos than a simple webpage
