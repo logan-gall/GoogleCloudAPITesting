@@ -10,7 +10,6 @@ This README file will be a tutorial for the repo, giving an overview of the file
 - Required Files
 - Cloud Set Up
 - Programming for Endpoints
-- Creating Tests
 - Docker
 - YAML
   
