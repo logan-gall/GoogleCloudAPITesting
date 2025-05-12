@@ -13,8 +13,7 @@ This README file will be a tutorial for the repo, giving an overview of the file
 - Creating Tests
 - Docker
 - YAML
-- Current Status
-
+  
 ## Data Flow
 ![](Cloud_API_DFD.jpg)
 
