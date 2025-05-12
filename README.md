@@ -115,9 +115,6 @@ You can create almost any application, though there are a couple **required feat
 * Note the application name (for Docker later)
 * Note what packages/imports are necessary (for Docker later)
 
-## Creating Tests
-Testing is incredibly important for any workflow. Given we are working on public-facing code, it is important to have a robust testing scheme. *todo*
-
 ## Docker
 Docker is a way to make our code easily run anywhere with little worry of environment errors. It containerizes the code so that it will run the same every time and on every compatible machine.
 
